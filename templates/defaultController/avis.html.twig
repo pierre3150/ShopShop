@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	{{ parent() }}
+	Liste des avis
+{% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-6 align-items-center">
+				<h1 class="text-center text-primary fw-bold m2">Liste des avis</h1>
+				{% for a in avis %}
+					<br>{{a.description}}
+					{{a.numerotation}}
+					{% if a.numerotation == 5 %}
+						{% for element in 1..a.numerotation %}
+							<i class="bi bi-star-fill"></i>
+						{% endfor %}
+					{% else %}
+						{% for element in 1..a.numerotation %}
+							<i class="bi bi-star-fill"></i>
+						{% endfor %}
+						{% for element in 1..(5 - a.numerotation) %}
+							<i class="bi bi-star"></i>
+						{% endfor %}
+					{% endif %}
+
+					{% endfor%}
+				</div>
+			</div>
+		</div>
+	{% endblock %}

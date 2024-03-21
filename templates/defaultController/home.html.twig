@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	Accueil
+{% endblock %}
+
+{% block content %}
+
+	<ul class="navbar_type">
+		{% for type in types %}
+			<a href="index.php?page=produits&id={{type.id}}">
+				{{type.label}}<br>
+			</a>
+			{% endfor%}
+		</ul>
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-10">
+					<h1 class="text-center">Bienvenue sur l'acceuil</h1>
+					<div class="table-responsive">
+						<div class="row row-cols-1 row-cols-md-3 g-4">
+							{% for produit in produits%}
+								<div class="col">
+									<div class="card h-100">
+										<img src="images/{{produit.image}}" class="card-img-top" alt="...">
+										<div class="card-body">
+											<h5 class="card-title">{{ produit.name }}</h5>
+											<p class="card-text">{{ produit.descriptions }}</p>
+											<a href="index.php?page=addAvis&id={{produit.id}}" class="btn btn-primary">Mettre un avis</a>
+											<a href="index.php?page=avis&id={{produit.id}}" class="btn btn-primary">Voir tout les avis</a>
+											<a href="index.php?page=produitp&id={{produit.id}}" class="btn btn-primary">voir le produit</a>
+
+										</div>
+										<div class="card-footer">
+											<small class="text-body-secondary">Last updated 3 mins ago</small>
+										</div>
+									</div>
+								</div>
+								{%endfor%}
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	{% endblock %}

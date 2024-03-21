@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    {{ parent() }}
+    Liste des cadis
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <h1 class="text-center text-dark">Liste des cadis</h1>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th width="60%" scope="col" class="text-primary">date de création</th>
+                                <th width="20%" scope="col" class="text-primary">statut</th>
+                                <th width="20%" scope="col" class="text-primary">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for c in carts %}
+                                <tr class="{{ cycle(['tableprimary','table-secondary'], loop.index0) }}">
+                                    <td>{{ c.creationdate | date("d-m-y à H:i:s") }}</td>
+                                    <td>{{ c.status }}</td>
+                                    <td>
+                                        <a href="index.php?page=deleteCart&id={{c.id}}">
+                                            <i class="bi bi-trash2-fill"></i>
+                                        </a>
+                                        <a href="index.php?page=updateCart&id={{c.id}}">
+                                            <i class="bi bi-pen-fill"></i>
+                                        </a>
+                                        <a href="index.php?page=cartitem&id={{c.id}}" class="btn btn-sm btn-primary">Afficher le contenu</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <a href="index.php?page=addcartperso" class="btn btn-sm btn-primary" style="position: fixed; bottom: 20px; right: 20px;">Ajouter un cadi personnel</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	Accueil
+{% endblock %}
+
+{% block content %}
+
+	<ul class="navbar_type">
+		{% for type in types %}
+			<a href="index.php?page=produits&id={{type.id}}">
+				{{type.label}}<br>
+			</a>
+			{% endfor%}
+		</ul>
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-10">
+					<h1 class="text-center">Produit en manque</h1>
+					<div class="table-responsive">
+						<div class="row row-cols-1 row-cols-md-3 g-4">
+							{% for produit in produits%}
+								<div class="col">
+									<div class="card h-100">
+										<img src="images/{{produit.image}}" class="card-img-top" style="width: 200px; height: auto;" alt="...">
+										<div class="card-body">
+											<h5 class="card-title">{{ produit.name }}</h5>
+											<p class="card-text">{{ produit.descriptions }}</p>
+                                            <p class="card-text" style="color: red;">Attention il ne reste que {{ produit.stock }} produits en stock <img src="https://i.pinimg.com/originals/a5/d0/67/a5d06761d4d3fed9158d034359c934b4.gif"></p>
+										</div>
+										<div class="card-footer">
+											<small class="text-body-secondary">Last updated 3 mins ago</small>
+										</div>
+									</div>
+								</div>
+								{%endfor%}
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	{% endblock %}

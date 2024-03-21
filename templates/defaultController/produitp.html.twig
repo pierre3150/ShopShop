@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    {{ parent() }}
+    info produit
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+                <h1 class="text-center text-dark">info du produit {{ produit.name }}</h1>
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="images/{{ produit.image }}" class="img-fluid" alt="{{ produit.name }}">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="text-center">{{ produit.name }}</h2>
+                        <p class="text-center">{{ produit.descriptions }}</p>
+                    </div>
+                </div>
+                <a href="index.php?page=addtocart&id={{produit.id}}" class="btn btn-primary" style="position: fixed; bottom: 20px; right: 20px;">Ajouter au panier</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

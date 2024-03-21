@@ -1,0 +1,26 @@
+.navbar_type {
+    position: fixed;
+    list-style: none;
+    background-color: #c6d0d3;
+    overflow: hidden;
+}
+
+.navbar_type li {
+    float: left;
+}
+
+.navbar_type li a {
+    display: block;
+    color: #E9D8A6;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar_type li a:hover {
+    background-color: #111;
+}
+
+.card-text {
+    color: red;
+}
